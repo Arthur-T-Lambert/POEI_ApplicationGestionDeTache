@@ -1,12 +1,15 @@
 import QtQuick 6.7
 import QtQuick.Controls 6.7
 import QtQuick.Layouts 6.7
+import "tasklist.js" as Database
 
 /*
  *
  */
 Column {
     id: taskList
+
+    property ListModel taskModel
 
     property int maxHeight
     state: "deployed"
@@ -70,15 +73,10 @@ Column {
         // Pour que ça ne déborde pas
         clip: true
 
-        model: ListModel {
-            // Test elements
-            ListElement { name: "Alice"; descr: "20" }
-            ListElement { name: "Bob"; descr: "28" }
-            ListElement { name: "Char"; descr: "42" }
-            ListElement { name: "Charl"; descr: "42" }
-        }
+        model: taskList.taskModel
 
         delegate: TaskDisplay {
+            title: model.name
         }
 
         Behavior on height { NumberAnimation { duration: 500 } }
