@@ -1,3 +1,11 @@
+/**
+ * @file TaskList.qml
+ * @brief A QML component for displaying a list of tasks with a collapsible header.
+ *
+ * This component defines a column layout for displaying a list of tasks. It includes a header with a button
+ * to toggle the visibility of the task list. The list of tasks is shown in a `ListView` that adapts its height
+ * based on the component's state.
+ */
 import QtQuick 6.7
 import QtQuick.Controls 6.7
 import QtQuick.Layouts 6.7
@@ -9,11 +17,21 @@ import "tasklist.js" as Database
 Column {
     id: taskList
 
+    /**
+     * @brief The model used to fill the list of tasks.
+     */
     property ListModel taskModel
 
     property int maxHeight
+
     state: "deployed"
 
+    /**
+     * @brief The states of the task list.
+     *
+     * - "deployed": The list view is fully visible.
+     * - "retracted": The list view is collapsed.
+     */
     states: [
         State {
             name: "deployed"
@@ -25,6 +43,12 @@ Column {
         }
     ]
 
+    /**
+     * @brief A header containing a title and a button to toggle the list view.
+     *
+     * The header displays the title and includes a button to expand or collapse the list view. The button's
+     * rotation indicates whether the list is expanded or collapsed.
+     */
     Rectangle {
         id: header
         color: application.palette.button
@@ -41,6 +65,12 @@ Column {
             text: "ListView"
             color: application.palette.buttonText
         }
+
+        /**
+         * @brief A button to toggle the visibility of the task list.
+         *
+         * When pressed, changes the state of the task list between "deployed" and "retracted".
+         */
         Button {
             height: header.height - 6
             width: header.height - 6
@@ -64,6 +94,11 @@ Column {
         }
     }
 
+    /**
+     * @brief A `ListView` displaying the list of tasks.
+     *
+     * Displays tasks using a delegate and adapts its height based on the component's state.
+     */
     ListView {
         id: listView
         anchors.left: parent.left
@@ -75,6 +110,11 @@ Column {
 
         model: taskList.taskModel
 
+        /**
+         * @brief A delegate for displaying individual tasks.
+         *
+         * Uses the `TaskDisplay` component to show each task in the list.
+         */
         delegate: TaskDisplay {
             title: model.name
         }

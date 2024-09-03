@@ -1,9 +1,23 @@
+/**
+ * @file AddTaskView.qml
+ * @brief A QML component that provides a user interface for managing tasks.
+ *
+ * This component creates a UI that allows users to add tasks with a name, due date, due time,
+ * and description. It also provides buttons for navigating to settings and going back in the stack view.
+ *
+ * The task data is inserted into a database by calling a JavaScript function from `tasklist.js`.
+ */
 import QtQuick 6.7
 import QtQuick.Controls 6.7
 import QtQuick.Controls.Material
 import "tasklist.js" as Database
 
-
+/**
+ * @class AddTaskView
+ * @brief The main class for the task management UI.
+ *
+ * This class creates a Rectangle that contains UI elements for adding tasks and navigation.
+ */
 Rectangle {
     //Settings {id: settingsPage}
     //TODO lien avec BDD
@@ -14,29 +28,48 @@ Rectangle {
     //color: palette.window
     //anchors.fill: parent
 
+
+    /**
+     * @brief A container for input fields and the add task button.
+     *
+     * This section contains input fields for task name, due date, due time, and description.
+     * It also includes a button to add a task to the database.
+     */
     Column {
         spacing: 20
         padding: 20
         anchors.centerIn: parent
 
+        /**
+         * @brief Input field for the task name.
+         */
         CustomTextField {
             id: taskNameField
             label: "Task Name"
             placeholder: "Enter task name"
         }
 
+        /**
+         * @brief Input field for the due date of the task.
+         */
         CustomTextField {
             id: dueDateField
             label: "Due Date"
             placeholder: "Enter due date"
         }
 
+        /**
+         * @brief Input field for the due time of the task.
+         */
         CustomTextField {
             id: dueTimeField
             label: "Due Time"
             placeholder: "Enter due time"
         }
 
+        /**
+         * @brief Input field for the task description.
+         */
         CustomTextField {
             id: description
             label: "Task Description"
@@ -44,6 +77,11 @@ Rectangle {
             inputFieldHeight: 100
         }
 
+        /**
+         * @brief Button to add a task.
+         *
+         * When clicked, the task data is added to the database.
+         */
         Button {
             text: "Add Task"
             font.bold: true
@@ -56,6 +94,11 @@ Rectangle {
 
     }
 
+    /**
+     * @brief Button to navigate to the settings page.
+     *
+     * When clicked, this button pushes the SettingsView.qml page onto the stack view.
+     */
     Button {
         anchors.top: parent.top
         anchors.right: parent.right
@@ -68,6 +111,11 @@ Rectangle {
         }
     }
 
+    /**
+     * @brief Button to navigate back in the stack view.
+     *
+     * When clicked, this button pops the current view from the stack view.
+     */
     Button {
         anchors.top: parent.top
         anchors.left: parent.left
@@ -79,13 +127,6 @@ Rectangle {
             stackView.pop()
         }
     }
-    //TODO back button et stackview
-    // Button {
-    //     text: "Settings"
-    //     anchors.top: parent.top
-    //     anchors.right: parent.right
-    //     onClicked: stackView.push(settingsPage)  // Affiche la page des paramètres
-    // }
 
 }
 

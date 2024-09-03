@@ -1,3 +1,11 @@
+/**
+ * @file MainPage.qml
+ * @brief The main page of the application that displays task lists and provides navigation controls.
+ *
+ * This component defines the main page layout of the application, including a header with navigation buttons,
+ * sections for different task lists, and functionality to update task data from the database.
+ */
+
 import QtQuick 6.7
 import QtQuick.Controls 6.7
 import QtQuick.Layouts 6.7
@@ -7,8 +15,19 @@ import "tasklist.js" as Database
 Page {
     id: mainPage
     anchors.fill: parent
+
+    /**
+     * @brief Signal emitted when the window size needs to be resized.
+     * @param width The new width of the window.
+     * @param height The new height of the window.
+     */
     signal resizeWindow(width: int, height: int)
 
+    /**
+     * @brief A rectangle that contains navigation buttons.
+     *
+     * Provides buttons for adding new tasks and navigating to the settings page.
+     */
     Rectangle {
         id: header
         anchors.top: parent.top
@@ -16,6 +35,11 @@ Page {
         anchors.right: parent.right
         height: 50
 
+        /**
+         * @brief A button to navigate to the "Add Task" view.
+         *
+         * When clicked, resizes the window and navigates to the "AddTaskView.qml" page.
+         */
         Button {
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.left
@@ -28,6 +52,13 @@ Page {
                 stackView.push(Qt.resolvedUrl("AddTaskView.qml"))
             }
         }
+
+        /**
+         * @class SettingsButton
+         * @brief A button to navigate to the settings page.
+         *
+         * When clicked, navigates to the "SettingsView.qml" page.
+         */
         Button {
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
@@ -41,6 +72,12 @@ Page {
         }
     }
 
+    /**
+     * @class TaskLists
+     * @brief A column layout for displaying task lists.
+     *
+     * Contains sections for tasks categorized by today, this week, and later.
+     */
     Column {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: header.bottom
@@ -57,16 +94,27 @@ Page {
         // anchors.topMargin: 10
         // spacing: 15
 
+        /**
+         * @brief A task list for tasks due today.
+         */
         TaskList {
             maxHeight: 300
             width: parent.width
             taskModel: tasksModelToday
         }
+
+        /**
+         * @brief A task list for tasks due this week.
+         */
         TaskList {
             maxHeight: 300
             width: parent.width
             taskModel: tasksModelWeek
         }
+
+        /**
+         * @brief A task list for tasks due later.
+         */
         TaskList {
             maxHeight: 300
             width: parent.width
@@ -74,19 +122,40 @@ Page {
         }
     }
 
+    /**
+     * @brief Model for tasks due today.
+     */
     ListModel {
         id : tasksModelToday
     }
+
+    /**
+     * @brief Model for tasks due this week.
+     */
     ListModel {
         id : tasksModelWeek
     }
+
+    /**
+     * @brief Model for tasks due later.
+     */
     ListModel {
         id : tasksModelLater
     }
 
+    /**
+     * @brief An item responsible for updating the task models.
+     *
+     * Retrieves tasks from the database and updates the task models accordingly.
+     */
     Item {
         id: tasks
 
+        /**
+         * @brief Updates the task models with data from the database.
+         *
+         * Clears existing task models and populates them with the latest data for tasks due today, this week, and later.
+         */
         function updated() {
             console.log("tasks updated")
 
@@ -131,5 +200,8 @@ Page {
         }
     }
 
+    /**
+     * @brief Initializes the database when the component is completed.
+     */
     Component.onCompleted: Database.init();
 }
