@@ -6,12 +6,13 @@ Rectangle {
 
     property string label: "Label"
     property string placeholder: "Enter text"
-    property int inputFieldHeight: 30
+    property int inputFieldHeight: 35
 
     id: textFieldWithLabel
     width: 300
     height: inputFieldHeight + 40
     radius: 8
+
 
     //SystemPalette { id: palette; colorGroup: SystemPalette.Active }
     //color: palette.window
@@ -35,7 +36,6 @@ Rectangle {
             id: inputField
             width: parent.width - 16
             placeholderText: placeholder
-            padding: 10
             font.pixelSize: 16
             height: inputFieldHeight
         }

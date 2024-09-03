@@ -33,6 +33,12 @@ Rectangle {
         }
 
         CustomTextField {
+            id: dueTimeField
+            label: "Due Time"
+            placeholder: "Enter due time"
+        }
+
+        CustomTextField {
             id: description
             label: "Task Description"
             placeholder: "Enter description"

@@ -6,22 +6,22 @@ import ".."
 ApplicationWindow {
     visible: true
     width: 600
-    height: 500
+    height: 600
     title: "Add Task"
 
     //TODO add stackview
 
-    Settings {
-        id: settings
+    // Settings {
+    //     id: settings
 
-    }
-
-    // AddTaskView {
-    //     id: addTaskView
     // }
 
-    SettingsView {
-        settings: settings
+    AddTaskView {
+        id: addTaskView
     }
+
+    // SettingsView {
+    //     settings: settings
+    // }
 
 }
