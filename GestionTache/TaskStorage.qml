@@ -7,8 +7,14 @@ import QtQuick.LocalStorage
 QtObject {
     id: storage
 
+    /** type:object the cached database, only to be accessed through functions
+      */
     property var _db
 
+    /** Access to the database : returns the cached database if already open, otherwise
+      * opens it.
+      * @return type:object the open database
+      */
     function _database()
     {
         if (_db) return _db
@@ -34,6 +40,15 @@ QtObject {
         return _db
     }
 
+    /** Adds a new task to the database
+      * @param type:string title the title (or name) of the task. mus tbe a non-empty string.
+      * @param type:string date the due date of the task in the form "yyyy-mm-dd"
+      * @param type:string time the due time in the day in the form "hh:mm". Can be an empty string,
+                                in wich case the due time is assumed to be "23:59" (i.e. the last minute)
+      * @param type:string description a brief descxription, or notes, about the task. Can be an empty string.
+      * @param type:int done a boolean value (1 or 0) indicating if the task is done (probably 0 at creation...)
+      * @return type:int the unique id of the created entry, or -1 if failure
+      */
     function addTask(title, date, time, description, done)
     {
         try {
@@ -53,6 +68,16 @@ QtObject {
         return -1;
     }
 
+    /** Updates a given task in the database
+      * @param type:int id the unique id of the entry in the database
+      * @param type:string title the new title (or name) of the task. mus tbe a non-empty string.
+      * @param type:string date the new due date of the task in the form "yyyy-mm-dd"
+      * @param type:string time the new due time in the day in the form "hh:mm". Can be an empty string,
+                                in wich case the due time is assumed to be "23:59" (i.e. the last minute)
+      * @param type:string description a new brief descxription, or notes, about the task. Can be an empty string.
+      * @param type:int done a boolean value (1 or 0) indicating if the task is done
+      * @return type:bool true if success, false else
+      */
     function updateTask(id, title, date, time, description, done)
     {
         try {
@@ -69,6 +94,9 @@ QtObject {
         return false;
     }
 
+    /** Obtain the complete list of tasks known. The tasks are sorted in due date ascending order.
+      * @return type:object the array of task objects
+      */
     function getTasks()
     {
         try {
@@ -95,6 +123,9 @@ QtObject {
         return [];
     }
 
+    /** completely clears the database. DO NOT DELETE the database itself
+      * @return type:bool true if successful, false else
+      */
     function deleteTasks() {
         try {
             storage._database().transaction(function(tx){
@@ -108,6 +139,9 @@ QtObject {
         return false;
     }
 
+    /** completely clears the database from tasks marked as done (completed)
+      * @return type:bool true if successful, false else
+      */
     function deleteDoneTasks() {
         try {
             storage._database().transaction(function(tx){
@@ -121,6 +155,10 @@ QtObject {
         return false;
     }
 
+    /** removes the task of given id from the database.
+      * @param type:int id the unique id of the task to be removed
+      * @return type:bool true if successful, false else
+      */
     function deleteTask(id) {
         try {
             storage._database().transaction(function (tx) {
@@ -134,6 +172,11 @@ QtObject {
         return false;
     }
 
+    /** Updates a given task in the database, but only on its completion status (done / not done)
+      * @param type:int id the unique id of the entry in the database
+      * @param type:int done a boolean value (1 or 0) indicating if the task is done
+      * @return type:bool true if success, false else
+      */
     function updateTaskState(id, done) {
         try {
             storage._database().transaction(function (tx) {
