@@ -1,7 +1,6 @@
 import QtQuick 6.7
 import QtQuick.Controls 6.7
 import QtQuick.Layouts 6.7
-import "tasklist.js" as Database
 
 Page {
     anchors.fill: parent
@@ -20,7 +19,7 @@ Page {
             text: "Add new"
 
             onClicked: {
-                console.log("Add new button cliecked")
+                console.log("Add new button clicked")
                 stackView.push(Qt.resolvedUrl("AddTaskView.qml"))
             }
         }
@@ -72,13 +71,13 @@ Page {
     }
 
     Item {
-        id: tasks
+        id: updateTaskList
 
         function updated() {
             console.log("tasks updated")
 
             tasksModelToday.clear();
-            let taskListToday = Database.todayTaskList();
+            let taskListToday = TaskStorage.getTodayTasks();
             for ( let i = 0; i < taskListToday.length; i++ ) {
                 tasksModelToday.append({
                     "id": taskListToday[i].id,
@@ -91,9 +90,9 @@ Page {
             }
 
             tasksModelWeek.clear();
-            let taskListWeek = Database.todayTaskList();
+            let taskListWeek = TaskStorage.getNextWeekTasks();
             for ( let j = 0; j < taskListWeek.length; j++ ) {
-                tasksModelToday.append({
+                tasksModelWeek.append({
                     "id": taskListWeek[j].id,
                     "title": taskListWeek[j].title,
                     "date": taskListWeek[j].date,
@@ -104,7 +103,7 @@ Page {
             }
 
             tasksModelLater.clear();
-            let taskListLater = Database.todayTaskList();
+            let taskListLater = TaskStorage.getLaterTasks();
             for ( let k = 0; k < taskListLater.length; k++ ) {
                 tasksModelLater.append({
                     "id": taskListLater[k].id,
@@ -116,7 +115,17 @@ Page {
                 })
             }
         }
+
+        Connections {
+            target: TaskStorage
+
+            onTaskListUpdated : {
+                console.log("Slot !");
+                updateTaskList.updated();
+            }
+        }
+
     }
 
-    Component.onCompleted: Database.init();
+    Component.onCompleted: updateTaskList.updated();
 }

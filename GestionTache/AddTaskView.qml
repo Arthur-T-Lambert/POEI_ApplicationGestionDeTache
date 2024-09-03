@@ -21,29 +21,30 @@ Rectangle {
 
         CustomTextField {
             id: taskNameField
-            label: "Task Name"
-            placeholder: "Enter task name"
+            label: "Titre"
+            placeholder: "Titre de la tâche"
         }
 
         CustomTextField {
             id: dueDateField
-            label: "Due Date"
-            placeholder: "Enter due date"
+            label: "Date"
+            placeholder: "Date de fin"
         }
 
         CustomTextField {
             id: description
-            label: "Task Description"
-            placeholder: "Enter description"
+            label: "Description"
+            placeholder: "Description"
             inputFieldHeight: 100
         }
 
         Button {
-            text: "Add Task"
+            text: "Ajouter"
             font.bold: true
             anchors.horizontalCenter: parent.horizontalCenter
             onClicked: {
-                //TODO
+                TaskStorage.addTask(taskNameField.text, dueDateField.text, "", description.text);
+                stackView.pop();
             }
         }
         Button {

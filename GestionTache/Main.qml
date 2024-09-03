@@ -2,7 +2,6 @@ import QtQuick 6.7
 import QtQuick.Controls 6.7
 import QtQuick.Controls.Material
 import QtQuick.Layouts 6.7
-import "tasklist.js" as Database
 import ".."
 
 Window {
