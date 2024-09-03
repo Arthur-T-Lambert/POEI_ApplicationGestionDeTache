@@ -17,6 +17,11 @@ qt_add_qml_module(appGestionTache
     VERSION 1.0
     QML_FILES
         Main.qml
+        QML_FILES CustomTextField.qml
+        QML_FILES
+        QML_FILES SettingsView.qml
+        QML_FILES AddTaskView.qml
+        QML_FILES Settings.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

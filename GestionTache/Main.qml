@@ -1,8 +1,25 @@
-import QtQuick
+import QtQuick 6.7
+import QtQuick.Controls 6.7
+import QtQuick.Controls.Material
+import ".."
 
-Window {
-    width: 640
-    height: 480
+ApplicationWindow {
     visible: true
-    title: qsTr("Gestion de Tâches")
+    width: 600
+    height: 500
+    title: "Add Task"
+
+    Settings {
+        id: settings
+
+    }
+
+    // AddTaskView {
+    //     id: addTaskView
+    // }
+
+    SettingsView {
+        settings: settings
+    }
+
 }
