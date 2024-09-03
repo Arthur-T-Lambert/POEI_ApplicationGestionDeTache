@@ -9,6 +9,8 @@ ApplicationWindow {
     height: 500
     title: "Add Task"
 
+    //TODO add stackview
+
     Settings {
         id: settings
 
