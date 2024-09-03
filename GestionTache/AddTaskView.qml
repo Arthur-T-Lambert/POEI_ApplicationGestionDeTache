@@ -5,7 +5,6 @@ import QtQuick.Controls.Material
 
 
 Rectangle {
-
     //Settings {id: settingsPage}
     //TODO lien avec BDD
     //signal addTaskSignal(string name, string dueDate, string description)

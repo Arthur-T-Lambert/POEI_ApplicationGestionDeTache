@@ -1,27 +1,25 @@
 import QtQuick 6.7
 import QtQuick.Controls 6.7
 import QtQuick.Controls.Material
+import QtQuick.Layouts 6.7
+import "tasklist.js" as Database
 import ".."
 
-ApplicationWindow {
+Window {
+    id: application
+    width: 640
+    height: 480
     visible: true
-    width: 600
-    height: 600
-    title: "Add Task"
+    title: qsTr("Gestion de Tâches")
 
-    //TODO add stackview
+    StackView {
+        id: stackView
+        anchors.fill: parent
 
-    // Settings {
-    //     id: settings
-
-    // }
-
-    AddTaskView {
-        id: addTaskView
+        initialItem: TaskListPage {}
     }
 
-    // SettingsView {
-    //     settings: settings
-    // }
-
+    Settings {
+        id: settings
+    }
 }

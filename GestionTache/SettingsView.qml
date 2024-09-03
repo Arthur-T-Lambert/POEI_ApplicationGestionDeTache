@@ -9,7 +9,7 @@ Page {
     width: 400
     height: 400
 
-    property var settings: null  // variable maj dans le main
+    // property var settings: null  // variable maj dans le main
 
     ColumnLayout {
         anchors.fill: parent
