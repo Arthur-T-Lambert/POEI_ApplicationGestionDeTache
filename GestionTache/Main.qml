@@ -15,11 +15,19 @@ Window {
     StackView {
         id: stackView
         anchors.fill: parent
-
         initialItem: TaskListPage {}
     }
 
     Settings {
         id: settings
+    }
+
+    Component.onCompleted: {
+        stackView.currentItem.resizeWindow.connect(resizeWindow)
+    }
+
+    function resizeWindow(newWidth, newHeight) {
+        application.width = newWidth
+        application.height = newHeight
     }
 }

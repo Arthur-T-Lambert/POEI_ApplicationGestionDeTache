@@ -1,10 +1,13 @@
 import QtQuick 6.7
 import QtQuick.Controls 6.7
 import QtQuick.Layouts 6.7
+import QtQuick.Controls.Material
 import "tasklist.js" as Database
 
 Page {
+    id: mainPage
     anchors.fill: parent
+    signal resizeWindow(width: int, height: int)
 
     Rectangle {
         id: header
@@ -20,7 +23,8 @@ Page {
             text: "Add new"
 
             onClicked: {
-                console.log("Add new button cliecked")
+                console.log("Add new button clicked")
+                mainPage.resizeWindow(600, 600)
                 stackView.push(Qt.resolvedUrl("AddTaskView.qml"))
             }
         }
@@ -43,6 +47,15 @@ Page {
         anchors.topMargin: 10
         width: 400
         spacing: 15
+
+        //Correction Masoo mais ça marche pas :(
+        // anchors.left: parent.left
+        // anchors.right: parent.right
+        // anchors.leftMargin: 30
+        // anchors.rightMargin: 30
+        // anchors.top: header.bottom
+        // anchors.topMargin: 10
+        // spacing: 15
 
         TaskList {
             maxHeight: 300

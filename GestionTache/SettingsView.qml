@@ -16,6 +16,19 @@ Page {
         anchors.margins: 20
         spacing: 20
 
+        Button {
+            // anchors.top: parent.top
+            // anchors.left: parent.left
+            //anchors.leftMargin : 10
+            Layout.alignment: Qt.AlignTop | Qt.AlignLeft
+            text: "Back"
+
+            onClicked: {
+                console.log("Settings button cliecked")
+                stackView.pop()
+            }
+        }
+
         GroupBox {
             title: "Theme"
             Layout.fillWidth: true

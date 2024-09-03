@@ -1,7 +1,7 @@
 import QtQuick 6.7
 import QtQuick.Controls 6.7
 import QtQuick.Controls.Material
-
+import "tasklist.js" as Database
 
 
 Rectangle {
@@ -12,7 +12,7 @@ Rectangle {
     width: parent.width
     height: parent.height
     //color: palette.window
-    anchors.fill: parent
+    //anchors.fill: parent
 
     Column {
         spacing: 20
@@ -49,17 +49,35 @@ Rectangle {
             font.bold: true
             anchors.horizontalCenter: parent.horizontalCenter
             onClicked: {
-                //TODO
+                console.log("insertion dans la db")
+                //Database.add(taskNameField.text, dueDateField.text, dueTimeField.text, description.text, true)
             }
-        }
-        Button {
-            //text: settingsPage.darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"
-            onClicked: {
-                //settingsPage.toggleTheme()
-            }
-            anchors.horizontalCenter: parent.horizontalCenter
         }
 
+    }
+
+    Button {
+        anchors.top: parent.top
+        anchors.right: parent.right
+        anchors.rightMargin: 10
+        text: "Settings"
+
+        onClicked: {
+            console.log("Settings button cliecked")
+            stackView.push(Qt.resolvedUrl("SettingsView.qml"))
+        }
+    }
+
+    Button {
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.leftMargin : 10
+        text: "Back"
+
+        onClicked: {
+            console.log("Settings button cliecked")
+            stackView.pop()
+        }
     }
     //TODO back button et stackview
     // Button {
