@@ -2,6 +2,9 @@ import QtQuick 6.7
 import QtQuick.Controls 6.7
 import QtQuick.Layouts 6.7
 
+/*
+ *
+ */
 Column {
     id: taskList
 
@@ -25,6 +28,8 @@ Column {
         radius: 10
         height: 30
         width: taskList.width
+        border.width: 1.5
+        border.color: "black"
 
         Text {
             anchors.verticalCenter: parent.verticalCenter
@@ -34,13 +39,25 @@ Column {
             color: application.palette.buttonText
         }
         Button {
-            height: header.height - 5
+            height: header.height - 6
+            width: header.height - 6
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             anchors.rightMargin: 5
-            width: header.height - 5
 
-            onPressed: taskList.state = taskList.state === "deployed" ? "retracted" : "deployed"
+            onPressed: {
+                taskList.state = taskList.state === "deployed" ? "retracted" : "deployed"
+                buttonText.rotation = buttonText.rotation === 180 ? 0 : 180
+            }
+
+            Text {
+                id: buttonText
+                text: "V"
+                anchors.centerIn: parent
+                rotation: 180
+
+                Behavior on rotation { NumberAnimation { duration: 500 } }
+            }
         }
     }
 
@@ -50,27 +67,18 @@ Column {
         anchors.right: parent.right
         spacing: 10
 
+        // Pour que ça ne déborde pas
         clip: true
 
         model: ListModel {
+            // Test elements
             ListElement { name: "Alice"; descr: "20" }
             ListElement { name: "Bob"; descr: "28" }
             ListElement { name: "Char"; descr: "42" }
             ListElement { name: "Charl"; descr: "42" }
-            ListElement { name: "Charli"; descr: "42" }
-            ListElement { name: "Charlie"; descr: "42" }
         }
 
-        delegate: Item {
-            id: rect
-            width: parent.width
-            height: 30
-
-            Text {
-                text: model.name
-                font.pointSize: 16
-                anchors.centerIn: parent
-            }
+        delegate: TaskDisplay {
         }
 
         Behavior on height { NumberAnimation { duration: 500 } }

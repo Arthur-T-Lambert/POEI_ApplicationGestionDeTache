@@ -23,11 +23,11 @@ Window {
         base: "blue"
     }
 
-    property int fontSize: 20
-
     Column {
         anchors.horizontalCenter: parent.horizontalCenter
         width: 400
+        spacing: 15
+
         TaskList {
             maxHeight: 300
             width: parent.width
@@ -41,6 +41,4 @@ Window {
             width: parent.width
         }
     }
-
-
 }
