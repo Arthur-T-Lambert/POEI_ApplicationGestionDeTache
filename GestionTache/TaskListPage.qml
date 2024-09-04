@@ -96,7 +96,9 @@ Page {
         /**
          * @brief A task list for tasks due today.
          */
+
         TaskList {
+            title: "Today"
             maxHeight: 300
             width: parent.width
             taskModel: tasksModelToday
@@ -106,6 +108,7 @@ Page {
          * @brief A task list for tasks due this week.
          */
         TaskList {
+            title: "This week"
             maxHeight: 300
             width: parent.width
             taskModel: tasksModelWeek
@@ -115,6 +118,7 @@ Page {
          * @brief A task list for tasks due later.
          */
         TaskList {
+            title: "Later"
             maxHeight: 300
             width: parent.width
             taskModel: tasksModelLater

@@ -25,6 +25,9 @@ Column {
 
     state: "deployed"
 
+    property string title: "ListView"
+
+
     /**
      * @brief The states of the task list.
      *
@@ -61,7 +64,7 @@ Column {
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: header.left
             anchors.leftMargin: 8
-            text: "ListView"
+            text: taskList.title
             color: application.palette.buttonText
         }
 
