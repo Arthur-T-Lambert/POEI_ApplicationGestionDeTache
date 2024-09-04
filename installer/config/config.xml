@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Installer>
+    <Name>POEI Gestion de Tâches</Name>
+    <Version>1.0.0</Version>
+    <Title>Gestion de Tâches Installer</Title>
+    <Publisher>POEI</Publisher>
+    <StartMenuDir>Gestion de Tâches</StartMenuDir>
+    <TargetDir>@HomeDir@/POEIGestionTache</TargetDir>
+</Installer>
