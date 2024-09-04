@@ -10,7 +10,7 @@ import QtQuick 6.7
 import QtQuick.Controls 6.7
 import QtQuick.Layouts 6.7
 import QtQuick.Controls.Material
-import "tasklist.js" as Database
+
 
 Page {
     id: mainPage
@@ -148,7 +148,7 @@ Page {
      * Retrieves tasks from the database and updates the task models accordingly.
      */
     Item {
-        id: tasks
+        id: updateTaskList
 
         /**
          * @brief Updates the task models with data from the database.
@@ -159,7 +159,7 @@ Page {
             console.log("tasks updated")
 
             tasksModelToday.clear();
-            let taskListToday = Database.todayTaskList();
+            let taskListToday = TaskStorage.getTodayTasks();
             for ( let i = 0; i < taskListToday.length; i++ ) {
                 tasksModelToday.append({
                     "id": taskListToday[i].id,
@@ -172,9 +172,9 @@ Page {
             }
 
             tasksModelWeek.clear();
-            let taskListWeek = Database.todayTaskList();
+            let taskListWeek = TaskStorage.getNextWeekTasks();
             for ( let j = 0; j < taskListWeek.length; j++ ) {
-                tasksModelToday.append({
+                tasksModelWeek.append({
                     "id": taskListWeek[j].id,
                     "title": taskListWeek[j].title,
                     "date": taskListWeek[j].date,
@@ -185,7 +185,7 @@ Page {
             }
 
             tasksModelLater.clear();
-            let taskListLater = Database.todayTaskList();
+            let taskListLater = TaskStorage.getLaterTasks();
             for ( let k = 0; k < taskListLater.length; k++ ) {
                 tasksModelLater.append({
                     "id": taskListLater[k].id,
@@ -197,10 +197,20 @@ Page {
                 })
             }
         }
+
+        Connections {
+            target: TaskStorage
+
+            onTaskListUpdated : {
+                console.log("Slot !");
+                updateTaskList.updated();
+            }
+        }
+
     }
 
     /**
-     * @brief Initializes the database when the component is completed.
+     * @brief Updates the database when the component is completed.
      */
-    Component.onCompleted: Database.init();
+    Component.onCompleted: updateTaskList.updated();
 }

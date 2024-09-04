@@ -24,7 +24,7 @@ qt_add_qml_module(appGestionTache
         QML_FILES SettingsView.qml
         QML_FILES AddTaskView.qml
         QML_FILES Settings.qml
-        QML_FILES tasklist.js
+        QML_FILES
         QML_FILES TaskStorage.qml
         QML_FILES TaskList.qml
         QML_FILES TaskDisplay.qml

@@ -8,7 +8,6 @@
 import QtQuick 6.7
 import QtQuick.Controls 6.7
 import QtQuick.Layouts 6.7
-import "tasklist.js" as Database
 
 Item {
     id: taskDisplayItem

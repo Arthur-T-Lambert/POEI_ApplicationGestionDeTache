@@ -26,6 +26,8 @@ Rectangle {
     property string placeholder: "Enter text"
     property int inputFieldHeight: 35
 
+    property alias text: inputField.text
+
     id: textFieldWithLabel
     width: 300
     height: inputFieldHeight + 40

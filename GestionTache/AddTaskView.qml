@@ -10,7 +10,6 @@
 import QtQuick 6.7
 import QtQuick.Controls 6.7
 import QtQuick.Controls.Material
-import "tasklist.js" as Database
 
 /**
  * @class AddTaskView
@@ -19,13 +18,6 @@ import "tasklist.js" as Database
  * This class creates a Rectangle that contains UI elements for adding tasks and navigation.
  */
 Rectangle {
-    //Settings {id: settingsPage}
-    //TODO lien avec BDD
-    //signal addTaskSignal(string name, string dueDate, string description)
-
-    //color: palette.window
-    //anchors.fill: parent
-
 
     /**
      * @brief A container for input fields and the add task button.
@@ -43,8 +35,8 @@ Rectangle {
          */
         CustomTextField {
             id: taskNameField
-            label: "Task Name"
-            placeholder: "Enter task name"
+            label: "Titre"
+            placeholder: "Titre de la tâche"
         }
 
         /**
@@ -52,8 +44,8 @@ Rectangle {
          */
         CustomTextField {
             id: dueDateField
-            label: "Due Date"
-            placeholder: "Enter due date"
+            label: "Date"
+            placeholder: "Date de fin"
         }
 
         /**
@@ -65,13 +57,14 @@ Rectangle {
             placeholder: "Enter due time"
         }
 
+
         /**
          * @brief Input field for the task description.
          */
         CustomTextField {
             id: description
-            label: "Task Description"
-            placeholder: "Enter description"
+            label: "Description"
+            placeholder: "Description"
             inputFieldHeight: 100
         }
 
@@ -81,12 +74,13 @@ Rectangle {
          * When clicked, the task data is added to the database.
          */
         Button {
-            text: "Add Task"
+            text: "Ajouter"
             font.bold: true
             anchors.horizontalCenter: parent.horizontalCenter
             onClicked: {
                 console.log("insertion dans la db")
-                //Database.add(taskNameField.text, dueDateField.text, dueTimeField.text, description.text, true)
+                TaskStorage.addTask(taskNameField.text, dueDateField.text, "", description.text);
+                stackView.pop();
             }
         }
 
