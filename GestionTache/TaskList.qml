@@ -75,7 +75,12 @@ Column {
         model: taskList.taskModel
 
         delegate: TaskDisplay {
+            db_id: model.db_id
             title: model.title
+            date: model.date
+            time: model.time
+            description: model.description
+            done: model.done
         }
 
         Behavior on height { NumberAnimation { duration: 500 } }
