@@ -10,7 +10,7 @@
 import QtQuick 6.7
 import QtQuick.Controls 6.7
 import QtQuick.Controls.Material
-
+import ".."
 /**
  * @class AddTaskView
  * @brief The main class for the task management UI.
@@ -46,6 +46,7 @@ Rectangle {
             id: dueDateField
             label: "Date"
             placeholder: "Date de fin"
+            calendarButton.visible: true
         }
 
         /**

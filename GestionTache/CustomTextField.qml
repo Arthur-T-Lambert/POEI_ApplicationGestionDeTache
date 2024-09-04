@@ -9,6 +9,7 @@
 import QtQuick 6.7
 import QtQuick.Controls 6.7
 import QtQuick.Controls.Material
+import ".."
 
 /**
  * @class CustomTextField
@@ -24,19 +25,19 @@ Rectangle {
      */
     property string label: "Label"
     property string placeholder: "Enter text"
-    property int inputFieldHeight: 35
-
+    property int inputFieldHeight: 44
     property alias text: inputField.text
+    property alias calendarButton: calendarButton
+
 
     id: textFieldWithLabel
     width: 300
-    height: inputFieldHeight + 40
+    height: inputFieldHeight + 42
     radius: 8
 
+    //signal dateSelected(date selectedDate)
+    signal dateSelected(date date)
 
-    //SystemPalette { id: palette; colorGroup: SystemPalette.Active }
-    //color: palette.window
-    //border.color: palette.border
     border.width: 1
     anchors.horizontalCenter: parent.horizontalCenter
 
@@ -75,7 +76,29 @@ Rectangle {
             placeholderText: placeholder
             font.pixelSize: 16
             height: inputFieldHeight
+
+            Button {
+                id: calendarButton
+                visible: false
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.right: parent.right
+                anchors.rightMargin: 5
+                text: "..."
+                onClicked: {
+                    calendarView.visible = true
+                }
+            }
+        }
+
+
+    }
+    CustomCalendar {
+        id: calendarView
+        visible: false
+        onDateSelected: function(date) {
+            if (date) {
+                inputField.text = Qt.formatDateTime(date, "yyyy-MM-dd"); // Met à jour le champ de texte
+            }
         }
     }
-
 }
