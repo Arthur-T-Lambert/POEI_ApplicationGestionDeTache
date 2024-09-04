@@ -14,7 +14,6 @@ import "tasklist.js" as Database
 
 Page {
     id: mainPage
-    anchors.fill: parent
 
     /**
      * @brief Signal emitted when the window size needs to be resized.

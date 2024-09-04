@@ -23,8 +23,6 @@ Rectangle {
     //TODO lien avec BDD
     //signal addTaskSignal(string name, string dueDate, string description)
 
-    width: parent.width
-    height: parent.height
     //color: palette.window
     //anchors.fill: parent
 
