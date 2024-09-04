@@ -5,7 +5,6 @@
  * This component defines a page with settings for toggling the dark mode, adjusting the font size,
  * and selecting the font family. It also includes a back button to navigate away from the settings page.
  */
-
 import QtQuick 6.7
 import QtQuick.Controls 6.7
 import QtQuick.Controls.Material 2.15
@@ -16,8 +15,6 @@ import ".."
 Page {
     width: 400
     height: 400
-
-    // property var settings: null  // variable maj dans le main
 
     /**
      * @class SettingsLayout

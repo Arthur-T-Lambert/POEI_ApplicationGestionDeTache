@@ -5,7 +5,6 @@
  * This component creates a custom text field with a label and a placeholder text.
  * It allows customization of the label, placeholder text, and input field height.
  */
-
 import QtQuick 6.7
 import QtQuick.Controls 6.7
 import QtQuick.Controls.Material
@@ -34,12 +33,10 @@ Rectangle {
     width: 300
     height: inputFieldHeight + 42
     radius: 8
-
-    //signal dateSelected(date selectedDate)
-    signal dateSelected(date date)
-
     border.width: 1
     anchors.horizontalCenter: parent.horizontalCenter
+
+    signal dateSelected(date date)
 
     /**
      * @class CustomTextFieldLayout
@@ -47,7 +44,6 @@ Rectangle {
      *
      * This section contains a Label and a TextField, arranged vertically.
      */
-
     Column {
         anchors.fill: parent
         spacing: 5
@@ -77,6 +73,9 @@ Rectangle {
             font.pixelSize: 16
             height: inputFieldHeight
 
+            /**
+             * @brief Shows the calendar view when clicked.
+             */
             Button {
                 id: calendarButton
                 visible: false
@@ -89,15 +88,22 @@ Rectangle {
                 }
             }
         }
-
-
     }
+
+    /**
+     * @class CustomCalendar
+     * @brief A custom calendar view component.
+     *
+     * This component provides a calendar view for date selection. It is initially hidden and shown when the user clicks the calendar button.
+     * It emits the `dateSelected` signal when a date is chosen.
+     * It also updates the inputField text.
+     */
     CustomCalendar {
         id: calendarView
         visible: false
         onDateSelected: function(date) {
             if (date) {
-                inputField.text = Qt.formatDateTime(date, "yyyy-MM-dd"); // Met à jour le champ de texte
+                inputField.text = Qt.formatDateTime(date, "yyyy-MM-dd");
             }
         }
     }

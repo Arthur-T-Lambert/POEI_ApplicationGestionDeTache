@@ -5,7 +5,6 @@
  * This file defines the main window of the application and sets up the primary components including the
  * `StackView` for navigation and the `Settings` component. It also handles resizing of the main window.
  */
-
 import QtQuick 6.7
 import QtQuick.Controls 6.7
 import QtQuick.Controls.Material

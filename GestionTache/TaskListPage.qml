@@ -5,12 +5,10 @@
  * This component defines the main page layout of the application, including a header with navigation buttons,
  * sections for different task lists, and functionality to update task data from the database.
  */
-
 import QtQuick 6.7
 import QtQuick.Controls 6.7
 import QtQuick.Layouts 6.7
 import QtQuick.Controls.Material
-
 
 Page {
     id: mainPage
@@ -84,19 +82,9 @@ Page {
         width: 400
         spacing: 15
 
-        //Correction Masoo mais ça marche pas :(
-        // anchors.left: parent.left
-        // anchors.right: parent.right
-        // anchors.leftMargin: 30
-        // anchors.rightMargin: 30
-        // anchors.top: header.bottom
-        // anchors.topMargin: 10
-        // spacing: 15
-
         /**
          * @brief A task list for tasks due today.
          */
-
         TaskList {
             title: "Today"
             maxHeight: 300

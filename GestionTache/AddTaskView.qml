@@ -11,6 +11,7 @@ import QtQuick 6.7
 import QtQuick.Controls 6.7
 import QtQuick.Controls.Material
 import ".."
+
 /**
  * @class AddTaskView
  * @brief The main class for the task management UI.
@@ -41,6 +42,7 @@ Rectangle {
 
         /**
          * @brief Input field for the due date of the task.
+         * Activates the calendar's button visibility
          */
         CustomTextField {
             id: dueDateField
@@ -84,7 +86,6 @@ Rectangle {
                 stackView.pop();
             }
         }
-
     }
 
     /**
@@ -99,7 +100,7 @@ Rectangle {
         text: "Settings"
 
         onClicked: {
-            console.log("Settings button cliecked")
+            console.log("Settings button clicked")
             stackView.push(Qt.resolvedUrl("SettingsView.qml"))
         }
     }
@@ -116,7 +117,7 @@ Rectangle {
         text: "Back"
 
         onClicked: {
-            console.log("Settings button cliecked")
+            console.log("Settings button clicked")
             stackView.pop()
         }
     }

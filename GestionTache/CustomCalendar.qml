@@ -1,7 +1,17 @@
+/**
+ * @file CustomCalendar.qml
+ * @brief The main window of the calendar.
+ */
 import QtQuick 6.7
 import QtQuick.Controls 6.7
 import QtQuick.Layouts 6.7
 
+/**
+ * @class CustomCalendar
+ * @brief The customed view of a calendar.
+ *
+ * This window contains the user interface elements to display and select a date in a calendar.
+ */
 Window {
     id: calendarWindow
     width: 400
@@ -12,17 +22,29 @@ Window {
     property var selectedDate: new Date(2024, 9, 1) // Date par défaut
     property int selectedDay: selectedDate.getDate() // Numéro du jour
 
+    /**
+     * @signal dateSelected
+     * @brief Signal emitted when a date is selected.
+     * @param date The selected date on the calendar.
+     */
     signal dateSelected(date selectedDate) // Signal pour la date
 
     ColumnLayout {
         spacing: 10
         anchors.fill: parent
 
+        /**
+         * @class RowLayout
+         * @brief Horizontal layout for navigation buttons and month title.
+         */
         RowLayout {
             Layout.fillWidth: true
             Layout.alignment: Qt.AlignHCenter
             spacing: 10
 
+            /**
+             * @brief Navigates to the previous month.
+             */
             Button {
                 text: "<"
                 onClicked: {
@@ -37,6 +59,9 @@ Window {
                 font.pixelSize: 20
             }
 
+            /**
+             * @brief Navigates to the next month.
+             */
             Button {
                 text: ">"
                 onClicked: {
@@ -47,11 +72,17 @@ Window {
             }
         }
 
+        /**
+         * @brief Displays the days of the week.
+         */
         DayOfWeekRow {
             locale: gridCalendar.locale
             Layout.fillWidth: true
         }
 
+        /**
+         * @brief Displays the days of the month in a grid.
+         */
         MonthGrid {
             id: gridCalendar
             month: selectedDate.getMonth()
@@ -72,12 +103,19 @@ Window {
                 }
             }
 
+            /**
+             * @brief Emitted when the user clicks on a date.
+             * @param date The clicked date.
+             */
             onClicked: (date) => {
                 selectedDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), date.getDate())
                 dateSelected(selectedDate) // émission signal date sélectionnée
             }
         }
 
+        /**
+         * @brief Closes the calendar window when clicked.
+         */
         Button {
             text: "OK"
             Layout.fillWidth: true
