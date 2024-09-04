@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package>
+    <DisplayName>Application</DisplayName>
+    <Description>Installe l'application principale</Description>
+    <Version>0.1.0-1</Version>
+    <ReleaseDate>2024-08-29</ReleaseDate>
+        <Licenses>
+        <License name="GT License Agreement" file="license.txt" />
+    </Licenses>
+</Package>
