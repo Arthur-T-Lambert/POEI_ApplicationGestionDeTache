@@ -115,7 +115,12 @@ Column {
          * Uses the `TaskDisplay` component to show each task in the list.
          */
         delegate: TaskDisplay {
+            db_id: model.db_id
             title: model.title
+            date: model.date
+            time: model.time
+            description: model.description
+            done: model.done
         }
 
         Behavior on height { NumberAnimation { duration: 500 } }
