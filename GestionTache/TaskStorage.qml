@@ -182,7 +182,6 @@ QtObject {
             storage._database().transaction(function (tx) {
                 tx.executeSql("UPDATE tasks set done=? WHERE id=?", [(done ? 1 : 0 ), id])
             })
-            taskListUpdated();
             return true;
         }
         catch(err) {

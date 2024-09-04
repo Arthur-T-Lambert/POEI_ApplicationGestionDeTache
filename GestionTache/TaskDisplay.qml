@@ -4,13 +4,12 @@ import QtQuick.Layouts 6.7
 
 Item {
     id: taskDisplayItem
-    width: parent.width
     height: 30
     opacity: 1
 
-    state: "active"
+    state: done ? "done" : "active"
 
-    property int id
+    property int db_id
     property string title
     property string date
     property string time
@@ -39,10 +38,21 @@ Item {
         spacing: 10
 
         Switch  {
-             onCheckedChanged: { taskDisplayItem.state = checked ? "done" : "active"
-                 console.log("done")
-                 Database.updateStatus(taskDisplayItem.id, checked)
-             }
+            id: doneSwitch
+            checked: taskDisplayItem.done
+            property bool init: false
+
+            onCheckedChanged: {
+                if (init) {
+                    console.log("checked :", checked, "state before :", taskDisplayItem.state)
+                    taskDisplayItem.state = checked ? "done" : "active"
+                    TaskStorage.updateTaskState(taskDisplayItem.db_id, checked)
+                }
+            }
+
+            Component.onCompleted: {
+                init = true
+            }
         }
 
         Text {

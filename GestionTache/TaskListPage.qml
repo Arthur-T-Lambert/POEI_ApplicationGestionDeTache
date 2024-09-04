@@ -80,7 +80,7 @@ Page {
             let taskListToday = TaskStorage.getTodayTasks();
             for ( let i = 0; i < taskListToday.length; i++ ) {
                 tasksModelToday.append({
-                    "id": taskListToday[i].id,
+                    "db_id": taskListToday[i].id,
                     "title": taskListToday[i].title,
                     "date": taskListToday[i].date,
                     "time": taskListToday[i].time,
@@ -93,7 +93,7 @@ Page {
             let taskListWeek = TaskStorage.getNextWeekTasks();
             for ( let j = 0; j < taskListWeek.length; j++ ) {
                 tasksModelWeek.append({
-                    "id": taskListWeek[j].id,
+                    "db_id": taskListWeek[j].id,
                     "title": taskListWeek[j].title,
                     "date": taskListWeek[j].date,
                     "time": taskListWeek[j].time,
@@ -106,7 +106,7 @@ Page {
             let taskListLater = TaskStorage.getLaterTasks();
             for ( let k = 0; k < taskListLater.length; k++ ) {
                 tasksModelLater.append({
-                    "id": taskListLater[k].id,
+                    "db_id": taskListLater[k].id,
                     "title": taskListLater[k].title,
                     "date": taskListLater[k].date,
                     "time": taskListLater[k].time,
@@ -119,7 +119,7 @@ Page {
         Connections {
             target: TaskStorage
 
-            onTaskListUpdated : {
+            function onTaskListUpdated() {
                 console.log("Slot !");
                 updateTaskList.updated();
             }
