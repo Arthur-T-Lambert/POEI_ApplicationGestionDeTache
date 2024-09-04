@@ -175,11 +175,12 @@ QtObject {
       */
     function updateTaskState(id, done)
     {
+        console.log("upodateTaskState() " + id + ":" + done);
         // clears the taskList cache, as it will be no more valid
         _tl = null;
         try {
             storage._database().transaction(function (tx) {
-                tx.executeSql("UPDATE tasks set done=? WHERE id=?", [done, id])
+                tx.executeSql("UPDATE tasks set done=? WHERE id=?", [(done ? 1 : 0 ), id])
             })
             taskListUpdated();
             return true;
