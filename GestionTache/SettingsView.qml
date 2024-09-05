@@ -144,7 +144,7 @@ Page {
                 Layout.fillWidth: true
                 spacing: 10
 
-                RowLayout {
+                ColumnLayout {
                     spacing: 10
                     Layout.fillWidth: true
 
@@ -156,30 +156,33 @@ Page {
                         Layout.alignment: Qt.AlignVCenter
                     }
 
-                    /**
-                     * @brief Slider to adjust the font size.
-                     *
-                     * Allows users to select a font size between 8 and 16.
-                     */
-                    Slider {
-                        id: fontSizeSlider
-                        from: 8
-                        to: 16
-                        stepSize: 1
-                        value: settings.fontSize
-                        onValueChanged: {
-                            settings.fontSize = value
-                            console.log(settings.fontSize)
+                    RowLayout
+                    {
+                        /**
+                         * @brief Slider to adjust the font size.
+                         *
+                         * Allows users to select a font size between 8 and 16.
+                         */
+                        Slider {
+                            id: fontSizeSlider
+                            from: 8
+                            to: 16
+                            stepSize: 1
+                            value: settings.fontSize
+                            onValueChanged: {
+                                settings.fontSize = value
+                                console.log(settings.fontSize)
+                            }
+                            Layout.fillWidth: true
                         }
-                        Layout.fillWidth: true
-                    }
 
-                    Text {
-                        text: settings.fontSize.toString()
-                        Layout.alignment: Qt.AlignVCenter
-                        font.pointSize: settings.fontSize
-                        font.family: settings.fontFamily
-                        color: settings.palette.text
+                        Text {
+                            text: settings.fontSize.toString()
+                            Layout.alignment: Qt.AlignVCenter
+                            font.pointSize: settings.fontSize
+                            font.family: settings.fontFamily
+                            color: settings.palette.text
+                        }
                     }
                 }
 
