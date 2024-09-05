@@ -72,9 +72,9 @@ Si l'utilisateur clique sur le titre d'une tâche, on passe directement au mode 
 ## Reste à faire
 
 Un lien vers un document décrivant les évolutions possibles :
-[TODO.md]("TODO.md")
+[TODO.md](TODO.md)
 
 ## Documentation technique
 
-[Documentation technique]("doc/html/index.html")
+[Documentation technique](doc/html/index.html)
 
