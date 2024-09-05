@@ -57,7 +57,8 @@ Rectangle {
         Label {
             text: label
             color: settings.palette.base
-            font.pixelSize: 14
+            font.pixelSize: settings.fontSize + 2
+            font.family: settings.fontFamily
             font.bold: true
         }
 
@@ -70,7 +71,8 @@ Rectangle {
             id: inputField
             width: parent.width - 16
             placeholderText: placeholder
-            font.pixelSize: 16
+            font.pixelSize: settings.fontSize + 4
+            font.family: settings.fontFamily
             height: inputFieldHeight
 
             /**

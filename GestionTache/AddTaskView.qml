@@ -99,7 +99,7 @@ Rectangle {
         anchors.topMargin: 10
         anchors.right: parent.right
         anchors.rightMargin: 10
-        text: "Settings"
+        text: "Paramètres"
 
         onClicked: {
             console.log("Settings button clicked")
@@ -117,7 +117,7 @@ Rectangle {
         anchors.topMargin: 10
         anchors.left: parent.left
         anchors.leftMargin : 10
-        text: "Back"
+        text: "Retour"
 
         onClicked: {
             console.log("Settings button clicked")

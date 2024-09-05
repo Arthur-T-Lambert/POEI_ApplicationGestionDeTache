@@ -13,7 +13,7 @@ import ".."
 
 
 Page {
-    width: 400
+    width: 400 + settings.fontSize * 5
     height: 400
     background: Rectangle {
         color: settings.palette.window
@@ -37,7 +37,7 @@ Page {
          */
         CustomButton {
             Layout.alignment: Qt.AlignTop | Qt.AlignLeft
-            text: "Back"
+            text: "Retour"
             onClicked: {
                 console.log("Back button clicked")
                 stackView.pop()
@@ -68,6 +68,7 @@ Page {
                 text: parent.title
                 font.bold: true
                 font.pointSize: settings.fontSize
+                font.family: settings.fontFamily
                 color: settings.palette.text
                 elide: Text.ElideRight
             }
@@ -100,6 +101,7 @@ Page {
                 Text {
                     text: "Mode sombre"
                     font.pointSize: settings.fontSize
+                    font.family: settings.fontFamily
                     color: settings.palette.text
                 }
             }
@@ -111,7 +113,7 @@ Page {
          * Contains controls for adjusting the font size and selecting the font family.
          */
         GroupBox {
-            title: "Font Settings"
+            title: "Paramètre de la police"
             Layout.fillWidth: true
 
             background: Rectangle {
@@ -128,6 +130,7 @@ Page {
                 text: parent.title
                 font.bold: true
                 font.pointSize: settings.fontSize
+                font.family: settings.fontFamily
                 color: settings.palette.text
                 elide: Text.ElideRight
             }
@@ -146,8 +149,9 @@ Page {
                     Layout.fillWidth: true
 
                     Text {
-                        text: "Font Size:"
+                        text: "Taille de la police:"
                         font.pointSize: settings.fontSize
+                        font.family: settings.fontFamily
                         color: settings.palette.text
                         Layout.alignment: Qt.AlignVCenter
                     }
@@ -174,6 +178,7 @@ Page {
                         text: settings.fontSize.toString()
                         Layout.alignment: Qt.AlignVCenter
                         font.pointSize: settings.fontSize
+                        font.family: settings.fontFamily
                         color: settings.palette.text
                     }
                 }
@@ -188,9 +193,10 @@ Page {
                     Layout.fillWidth: true
 
                     Text {
-                        text: "Font Family:"
+                        text: "Type de police:"
                         Layout.alignment: Qt.AlignVCenter
                         font.pointSize: settings.fontSize
+                        font.family: settings.fontFamily
                         color: settings.palette.text
                     }
 
@@ -202,6 +208,7 @@ Page {
                     ComboBox {
                         id: fontComboBox
                         font.pointSize: settings.fontSize
+                        font.family: settings.fontFamily
                         padding: 2
                         model: ["Arial", "Courier New", "Times New Roman", "Verdana"]
                         currentIndex: 0  // Police par défaut

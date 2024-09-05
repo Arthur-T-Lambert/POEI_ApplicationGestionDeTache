@@ -45,6 +45,7 @@ Page {
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.left
             anchors.leftMargin: 10
+            width: 70 + settings.fontSize * 5
             text: "Nouvelle tâche"
 
             onClicked: {

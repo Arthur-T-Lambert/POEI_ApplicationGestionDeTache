@@ -5,7 +5,7 @@ Rectangle {
     color: settings.palette.button
     border.color: settings.palette.base
     radius: 16
-    implicitWidth: 100
+    implicitWidth: 50 + settings.fontSize * 5
     implicitHeight: 40
 
     signal clicked()
