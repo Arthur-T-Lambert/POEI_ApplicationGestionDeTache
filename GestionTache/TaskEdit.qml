@@ -54,6 +54,7 @@ Rectangle {
             label: "Date"
             placeholder: "Date de fin"
             text: pageRoot.date
+            calendarButton.visible: true
         }
 
         /**
@@ -65,7 +66,6 @@ Rectangle {
             placeholder: "Enter due time"
             text: pageRoot.time
         }
-
 
         /**
          * @brief Input field for the task description.
