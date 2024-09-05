@@ -29,6 +29,7 @@ qt_add_qml_module(appGestionTache
         QML_FILES TaskDisplay.qml
         QML_FILES TaskListPage.qml
         QML_FILES CustomButton.qml
+        QML_FILES TaskEdit.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
