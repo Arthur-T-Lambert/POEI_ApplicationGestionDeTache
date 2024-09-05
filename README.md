@@ -76,5 +76,5 @@ Un lien vers un document décrivant les évolutions possibles :
 
 ## Documentation technique
 
-[Documentation technique](doc/html/index.html)
+[Documentation technique](GestionTache/doc/html/index.html)
 
