@@ -4,9 +4,14 @@ Implémentation d'une application de gestion de tâche (ToDoList).
 
 ## Description
 
-Ceci est une petite application, à la limite un "widget", permettant la gestion des tâches du quotidien par l'utilisateur. L'utilisateur peut à tout moment consulter la liste des tâches qu'il s'est assigné. Chaque tâche comporte un nom ou un titre, une description optionelle, une date et une heure de complétion, ainsi qu'une case à cocher pour indiquer si la tâche est effectuée ou non. La liste des tâche est persistente d'une exécution à l'autre.
+Ceci est une petite application, à la limite un "widget", permettant la gestion des tâches du quotidien par l'utilisateur. L'utilisateur peut à tout moment consulter la liste des tâches qu'il s'est assigné. Chaque tâche comporte un nom ou un titre, une description optionelle, une date et une heure de complétion, ainsi qu'une case à cocher pour indiquer si la tâche est effectuée ou non. La liste des tâche est persistante d'une exécution à l'autre.
 
 ## Installation
+
+- **Windows x86_64** :
+  Lancer l'exécutable `BTInstaller_win_x86_64.exe`, placé à la racine du dépôt, et suivre les instructions.
+- **Autres plateformes** :
+  En cours de développement. 
 
 ## Fonctionalités
 
@@ -35,7 +40,7 @@ Les tâches non effectuées dont la date de réalisation est dépassée restent 
 
 La description, si elle est présente, n'est pas visible directement dans la liste des tâche.
 
-Si la liste des tâches est plus grande que la place disponible dans la fenêtre de l'application, un ascenceur apparaît pour faire glisser la liste des tâches et la rendre entièrement accessible.
+Si la liste des tâches est plus grande que la place disponible dans la fenêtre de l'application, un ascenseur apparaît pour faire glisser la liste des tâches et la rendre entièrement accessible.
 
 ### Changer le statut d'une tâche
 
@@ -62,5 +67,14 @@ Si l'utilisateur clique sur le titre d'une tâche, on passe directement au mode 
 
 - Si l'utilisateur clique sur le bouton `Annuler`, la fenêtre se ferme et laisse la place à la fenêtre principale sans rien changer à la liste des tâches. 
 - Si l'utilisateur clique sur le bouton`Supprimer`, une fenêtre popup apparaît demandant à l'utilisateur de confirmer son action. Si c'est le cas, la fenêtre se ferme et laisse la place à la fenêtre principale, avec la liste des tâches mise à jour avec la tâche qui vient d'être supprimée n'apparaissant plus. 
-- Si l'utilisateur clique sur le bouton `Valider` et que toutes les infos sont correctes (titre d'au moins un caractère, date valide), la fenêtre se ferme et laisse la place à la fenêtre principale, avec la liste des tâches à jour avec la tâche editée à jour et dans la bonne sous-liste.
+- Si l'utilisateur clique sur le bouton `Valider` et que toutes les infos sont correctes (titre d'au moins un caractère, date valide), la fenêtre se ferme et laisse la place à la fenêtre principale, avec la liste des tâches à jour avec la tâche éditée à jour et dans la bonne sous-liste.
+
+## Reste à faire
+
+Un lien vers un document décrivant les évolutions possibles :
+[TODO.md]("TODO.md")
+
+## Documentation technique
+
+[Documentation technique]("doc/html/index.html")
 

@@ -1,0 +1,6 @@
+var searchData=
+[
+  ['deletedonetasks_0',['deleteDoneTasks',['../class_gestion_tache_1_1_task_storage.html#a8d3f8dc51a7a436490bdc8d80aa22282',1,'GestionTache::TaskStorage::deleteDoneTasks()'],['../class_gestion_tache_1_1_task_storage.html#a8d3f8dc51a7a436490bdc8d80aa22282',1,'GestionTache::TaskStorage::deleteDoneTasks()'],['../class_task_storage.html#a93e97042eddb8513f45f06d94a66d483',1,'TaskStorage::deleteDoneTasks()']]],
+  ['deletetask_1',['deleteTask',['../class_gestion_tache_1_1_task_storage.html#a51e4527f4c852e9d3d9865e38c0bcd9d',1,'GestionTache::TaskStorage::deleteTask(int id)'],['../class_gestion_tache_1_1_task_storage.html#a51e4527f4c852e9d3d9865e38c0bcd9d',1,'GestionTache::TaskStorage::deleteTask(int id)'],['../class_task_storage.html#a9a9199e59cf9ac9947d860b02362e942',1,'TaskStorage::deleteTask()']]],
+  ['deletetasks_2',['deleteTasks',['../class_gestion_tache_1_1_task_storage.html#a7b87db11c846b28a213f94b369ccdbc1',1,'GestionTache::TaskStorage::deleteTasks()'],['../class_gestion_tache_1_1_task_storage.html#a7b87db11c846b28a213f94b369ccdbc1',1,'GestionTache::TaskStorage::deleteTasks()'],['../class_task_storage.html#a099580afb1289e971ca984989c3a5bf9',1,'TaskStorage::deleteTasks()']]]
+];
