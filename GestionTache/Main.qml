@@ -9,6 +9,7 @@ import QtQuick 6.7
 import QtQuick.Controls 6.7
 import QtQuick.Controls.Material
 import QtQuick.Layouts 6.7
+import QtCore
 import ".."
 
 /**
@@ -26,10 +27,28 @@ Window {
     title: qsTr("Gestion de Tâches")
     color: settings.palette.window
 
+    /**
+     * @brief The StackView that allow navigation
+     *
+     * Pile up pages on a stack. The default page is the TaskListPage
+     */
     StackView {
         id: stackView
         anchors.fill: parent
         initialItem: TaskListPage {}
+    }
+
+    /**
+     * @brief The settings object for saving settings.
+     *
+     * Provides a mean to save settings across app restart.
+     */
+    Settings
+    {
+        id: settingsValues
+        property alias darkMode: settings.darkMode
+        property alias fontSize: settings.fontSize
+        property alias fontFamily : settings.fontFamily
     }
 
     /**
@@ -38,9 +57,8 @@ Window {
      * Provides configuration options for the application. This instance can be used to access or modify
      * application settings.
      */
-    Settings {
+    AppSettings {
         id: settings
-        darkMode: Application.styleHints.colorScheme === Qt.ColorScheme.Dark
     }
 
     /**

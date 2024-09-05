@@ -19,7 +19,7 @@ Window {
     visible: true
     title: qsTr("Calendar Example")
 
-    property var selectedDate: new Date(2024, 9, 1) // Date par défaut
+    property var selectedDate: new Date(2024, 9, 5) // Date par défaut
     property int selectedDay: selectedDate.getDate() // Numéro du jour
 
     /**

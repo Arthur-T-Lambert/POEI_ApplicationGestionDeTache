@@ -13,6 +13,9 @@ int main(int argc, char *argv[])
     // Create a QGuiApplication object, which manages application-wide resources and settings.
     QGuiApplication app(argc, argv);
 
+    app.setOrganizationName("somename");
+    app.setOrganizationDomain("somename");
+
     // Create a QQmlApplicationEngine object, which loads and manages QML files.
     QQmlApplicationEngine engine;
 

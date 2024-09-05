@@ -11,6 +11,8 @@ import QtQuick.Controls 6.7
 import QtQuick.Controls.Material 2.15
 
 QtObject {
+    id: root
+
     property bool darkMode: false
     property int fontSize: 10
     property string fontFamily: "Arial"
@@ -22,7 +24,7 @@ QtObject {
      * This function switches the `darkMode` property between `true` and `false`.
      */
     function toggleTheme() {
-        darkMode = !darkMode
+        settingsValues.darkMode = !settingsValues.darkMode
     }
 
     /**
@@ -31,7 +33,7 @@ QtObject {
      *
      * Default value is `paletteLight`.
      */
-    property Palette palette: darkMode ? paletteDark : paletteLight
+    property Palette palette: settingsValues.darkMode ? paletteDark : paletteLight
 
     /**
      * @property paletteLight
