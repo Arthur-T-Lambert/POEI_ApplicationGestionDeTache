@@ -52,6 +52,7 @@ QtObject {
         brightText: "black"
         highlight: "green"
         text: "black"
+        highlightedText: "red"
     }
 
     /**
@@ -71,5 +72,6 @@ QtObject {
         brightText: "white"
         highlight: "green"
         text: "white"
+        highlightedText: "red"
     }
 }

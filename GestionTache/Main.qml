@@ -21,8 +21,8 @@ import ".."
  */
 Window {
     id: application
-    width: 480
-    height: 640
+    width: 600
+    height: 600
     visible: true
     title: qsTr("Gestion de Tâches")
     color: settings.palette.window

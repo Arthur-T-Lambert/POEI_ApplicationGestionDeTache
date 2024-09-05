@@ -54,6 +54,24 @@ Item {
         spacing: 10
 
         /**
+         * @brief Delete button.
+         *
+         * Delete the corresponding task from the database and reload.
+         */
+        Button
+        {
+            text: "X"
+            width: 12
+            height: 12
+            anchors.verticalCenter: parent.verticalCenter
+            palette.buttonText: "red"
+
+            onClicked: {
+                TaskStorage.deleteTask(taskDisplayItem.db_id)
+            }
+        }
+
+        /**
          * @brief A switch to mark the task as done.
          *
          * Changes the task's state and updates its status in the database when checked or unchecked.
@@ -62,6 +80,7 @@ Item {
             id: doneSwitch
             checked: taskDisplayItem.done
             property bool init: false
+            anchors.verticalCenter: parent.verticalCenter
 
             onCheckedChanged: {
                 if (init) {

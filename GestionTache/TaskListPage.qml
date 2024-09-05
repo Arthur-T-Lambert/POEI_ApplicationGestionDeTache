@@ -42,6 +42,7 @@ Page {
          * When clicked, resizes the window and navigates to the "AddTaskView.qml" page.
          */
         CustomButton {
+            id: backButton
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.left
             anchors.leftMargin: 10
@@ -52,6 +53,24 @@ Page {
                 console.log("Add new button clicked")
                 mainPage.resizeWindow(600, 600)
                 stackView.push(Qt.resolvedUrl("AddTaskView.qml"))
+            }
+        }
+
+        /**
+         * @brief A button to clear done tasks.
+         *
+         * When clicked, delete done tasks from the database and reload the page.
+         */
+        CustomButton {
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: backButton.right
+            anchors.leftMargin: 10
+            width: 150 + settings.fontSize * 5
+            text: "Supprimer les tâches faites"
+
+            onClicked: {
+                console.log("Delete done tasks")
+                TaskStorage.deleteDoneTasks();
             }
         }
 
