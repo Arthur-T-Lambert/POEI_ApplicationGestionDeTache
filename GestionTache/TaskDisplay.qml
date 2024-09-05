@@ -23,19 +23,22 @@ Item {
     property string description
     property bool done
 
-    // Zone de click pour la modification de la tache
+    /**
+     * @brief Clickable zone to switch to TaskEdit page.
+     */
     MouseArea {
-        anchors.fill: parent
-        hoverEnabled: true
-        onClicked: { console.log("modif") }
-
-        onPressed: {  }
-
-        onReleased: {  }
-
-        onEntered: {  }
-
-        onExited: {  }
+        anchors.fill: taskRow
+        onClicked: {
+            console.log("modif")
+            stackView.push(Qt.resolvedUrl("TaskEdit.qml"),
+                           {
+                               "db_id": taskDisplayItem.db_id,
+                               "title": taskDisplayItem.title,
+                               "date": taskDisplayItem.date,
+                               "time": taskDisplayItem.time,
+                               "description": taskDisplayItem.description
+                           })
+        }
     }
 
     /**
@@ -44,6 +47,7 @@ Item {
      * This layout arranges a switch and the task title horizontally.
      */
     Row {
+        id: taskRow
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.leftMargin: 10
