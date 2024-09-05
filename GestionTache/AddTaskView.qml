@@ -19,6 +19,7 @@ import ".."
  * This class creates a Rectangle that contains UI elements for adding tasks and navigation.
  */
 Rectangle {
+    color: settings.palette.window
 
     /**
      * @brief A container for input fields and the add task button.
@@ -76,9 +77,9 @@ Rectangle {
          *
          * When clicked, the task data is added to the database.
          */
-        Button {
+        CustomButton {
             text: "Ajouter"
-            font.bold: true
+            // font.bold: true
             anchors.horizontalCenter: parent.horizontalCenter
             onClicked: {
                 console.log("insertion dans la db")
@@ -93,8 +94,9 @@ Rectangle {
      *
      * When clicked, this button pushes the SettingsView.qml page onto the stack view.
      */
-    Button {
+    CustomButton {
         anchors.top: parent.top
+        anchors.topMargin: 10
         anchors.right: parent.right
         anchors.rightMargin: 10
         text: "Settings"
@@ -110,8 +112,9 @@ Rectangle {
      *
      * When clicked, this button pops the current view from the stack view.
      */
-    Button {
+    CustomButton {
         anchors.top: parent.top
+        anchors.topMargin: 10
         anchors.left: parent.left
         anchors.leftMargin : 10
         text: "Back"

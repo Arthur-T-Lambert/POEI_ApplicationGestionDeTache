@@ -20,10 +20,11 @@ import ".."
  */
 Window {
     id: application
-    width: 640
-    height: 480
+    width: 480
+    height: 640
     visible: true
     title: qsTr("Gestion de Tâches")
+    color: settings.palette.window
 
     StackView {
         id: stackView
@@ -39,6 +40,7 @@ Window {
      */
     Settings {
         id: settings
+        darkMode: Application.styleHints.colorScheme === Qt.ColorScheme.Dark
     }
 
     /**

@@ -12,6 +12,9 @@ import QtQuick.Controls.Material
 
 Page {
     id: mainPage
+    background: Rectangle {
+        color: settings.palette.window
+    }
 
     /**
      * @brief Signal emitted when the window size needs to be resized.
@@ -30,18 +33,19 @@ Page {
         anchors.top: parent.top
         anchors.left: parent.left
         anchors.right: parent.right
-        height: 50
+        height: 60
+        color: settings.palette.window
 
         /**
          * @brief A button to navigate to the "Add Task" view.
          *
          * When clicked, resizes the window and navigates to the "AddTaskView.qml" page.
          */
-        Button {
+        CustomButton {
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.left
             anchors.leftMargin: 10
-            text: "Add new"
+            text: "Nouvelle tâche"
 
             onClicked: {
                 console.log("Add new button clicked")
@@ -56,11 +60,11 @@ Page {
          *
          * When clicked, navigates to the "SettingsView.qml" page.
          */
-        Button {
+        CustomButton {
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             anchors.rightMargin: 10
-            text: "Settings"
+            text: "Paramètres"
 
             onClicked: {
                 console.log("Settings button cliecked")
@@ -86,7 +90,7 @@ Page {
          * @brief A task list for tasks due today.
          */
         TaskList {
-            title: "Today"
+            title: "Aujourd'hui"
             maxHeight: 300
             width: parent.width
             taskModel: tasksModelToday
@@ -96,7 +100,7 @@ Page {
          * @brief A task list for tasks due this week.
          */
         TaskList {
-            title: "This week"
+            title: "Cette semaine"
             maxHeight: 300
             width: parent.width
             taskModel: tasksModelWeek
@@ -106,7 +110,7 @@ Page {
          * @brief A task list for tasks due later.
          */
         TaskList {
-            title: "Later"
+            title: "Plus tard"
             maxHeight: 300
             width: parent.width
             taskModel: tasksModelLater

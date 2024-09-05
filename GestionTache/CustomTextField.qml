@@ -56,7 +56,7 @@ Rectangle {
          */
         Label {
             text: label
-            //color: palette.windowText
+            color: settings.palette.base
             font.pixelSize: 14
             font.bold: true
         }
@@ -76,9 +76,10 @@ Rectangle {
             /**
              * @brief Shows the calendar view when clicked.
              */
-            Button {
+            CustomButton {
                 id: calendarButton
                 visible: false
+                width: 20
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.right: parent.right
                 anchors.rightMargin: 5

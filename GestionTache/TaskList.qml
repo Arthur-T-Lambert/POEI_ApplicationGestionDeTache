@@ -17,7 +17,6 @@ Column {
      * @brief The model used to fill the list of tasks.
      */
     property ListModel taskModel
-
     property int maxHeight
 
     state: "deployed"
@@ -50,19 +49,21 @@ Column {
      */
     Rectangle {
         id: header
-        color: application.palette.button
+        color: settings.palette.button
         radius: 10
         height: 30
         width: taskList.width
         border.width: 1.5
-        border.color: "black"
+        border.color: settings.palette.brightText
 
         Text {
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: header.left
             anchors.leftMargin: 8
             text: taskList.title
-            color: application.palette.buttonText
+            font.family: settings.fontFamily
+            font.pointSize: settings.fontSize
+            color: settings.palette.buttonText
         }
 
         /**
@@ -70,14 +71,14 @@ Column {
          *
          * When pressed, changes the state of the task list between "deployed" and "retracted".
          */
-        Button {
+        CustomButton {
             height: header.height - 6
             width: header.height - 6
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             anchors.rightMargin: 5
 
-            onPressed: {
+            onClicked: {
                 taskList.state = taskList.state === "deployed" ? "retracted" : "deployed"
                 buttonText.rotation = buttonText.rotation === 180 ? 0 : 180
             }
@@ -87,8 +88,9 @@ Column {
                 text: "V"
                 anchors.centerIn: parent
                 rotation: 180
+                color: settings.palette.buttonText
 
-                Behavior on rotation { NumberAnimation { duration: 500 } }
+                Behavior on rotation { NumberAnimation { duration: 400 } }
             }
         }
     }
@@ -103,6 +105,7 @@ Column {
         anchors.left: parent.left
         anchors.right: parent.right
         spacing: 10
+        palette: settings.palette
 
         // Pour que ça ne déborde pas
         clip: true

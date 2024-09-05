@@ -25,6 +25,9 @@ Rectangle {
     property string date
     property string time
     property string description
+
+    color: settings.palette.window
+
     /**
      * @brief A container for input fields and the validate change button.
      *
@@ -83,9 +86,9 @@ Rectangle {
          *
          * When clicked, the task data is edited in the database.
          */
-        Button {
+        CustomButton {
             text: "Modifier"
-            font.bold: true
+            // font.bold: true
             anchors.horizontalCenter: parent.horizontalCenter
             onClicked: {
                 console.log("modification dans la db")
@@ -101,8 +104,9 @@ Rectangle {
      *
      * When clicked, this button pushes the SettingsView.qml page onto the stack view.
      */
-    Button {
+    CustomButton {
         anchors.top: parent.top
+        anchors.topMargin: 10
         anchors.right: parent.right
         anchors.rightMargin: 10
         text: "Settings"
@@ -118,8 +122,9 @@ Rectangle {
      *
      * When clicked, this button pops the current view from the stack view.
      */
-    Button {
+    CustomButton {
         anchors.top: parent.top
+        anchors.topMargin: 10
         anchors.left: parent.left
         anchors.leftMargin : 10
         text: "Back"

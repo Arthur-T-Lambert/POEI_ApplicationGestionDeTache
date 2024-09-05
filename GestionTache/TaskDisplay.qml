@@ -77,9 +77,20 @@ Item {
         }
 
         Text {
+            anchors.verticalCenter: parent.verticalCenter
             text: taskDisplayItem.title
             font.bold: true
-            font.pointSize: 16
+            font.family: settings.fontFamily
+            font.pointSize: settings.fontSize + 1
+            color: settings.palette.text
+        }
+
+        Text {
+            anchors.verticalCenter: parent.verticalCenter
+            text: taskDisplayItem.date + " at " + taskDisplayItem.time
+            font.family: settings.fontFamily
+            font.pointSize: settings.fontSize
+            color: settings.palette.text
         }
     }
 

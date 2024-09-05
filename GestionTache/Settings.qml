@@ -11,9 +11,8 @@ import QtQuick.Controls 6.7
 import QtQuick.Controls.Material 2.15
 
 QtObject {
-
     property bool darkMode: false
-    property int fontSize: 14
+    property int fontSize: 10
     property string fontFamily: "Arial"
 
     /**
@@ -32,7 +31,7 @@ QtObject {
      *
      * Default value is `paletteLight`.
      */
-    property Palette palette: paletteLight
+    property Palette palette: darkMode ? paletteDark : paletteLight
 
     /**
      * @property paletteLight
@@ -42,10 +41,15 @@ QtObject {
      * `window`, and `base`.
      */
     readonly property Palette paletteLight: Palette {
-        buttonText: "darkGreen"
-        button: "lightBlue"
+        buttonText: "black"
+        button: "#C9C8C8"
+        light : "#BFBEBE"
         window: "white"
-        base: "red"
+        base: "#333333"
+        alternateBase: "#242323"
+        brightText: "black"
+        highlight: "green"
+        text: "black"
     }
 
     /**
@@ -56,9 +60,14 @@ QtObject {
      * `window`, and `base`.
      */
     readonly property Palette paletteDark: Palette {
-        buttonText: "red"
-        button: "DarkBlue"
-        window: "black"
-        base: "blue"
+        buttonText: "white"
+        button: "#2E2E2E"
+        light : "#383838"
+        window: "#282828"
+        base: "#2E2E2E"
+        alternateBase: "white"
+        brightText: "white"
+        highlight: "green"
+        text: "white"
     }
 }

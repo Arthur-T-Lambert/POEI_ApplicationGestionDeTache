@@ -15,6 +15,9 @@ import ".."
 Page {
     width: 400
     height: 400
+    background: Rectangle {
+        color: settings.palette.window
+    }
 
     /**
      * @class SettingsLayout
@@ -32,7 +35,7 @@ Page {
          *
          * When clicked, this button pops the current view from the stack view.
          */
-        Button {
+        CustomButton {
             Layout.alignment: Qt.AlignTop | Qt.AlignLeft
             text: "Back"
             onClicked: {
@@ -51,7 +54,25 @@ Page {
             title: "Theme"
             Layout.fillWidth: true
 
-            ColumnLayout {
+            background: Rectangle {
+                y: parent.topPadding - parent.bottomPadding
+                width: parent.width
+                height: parent.height - parent.topPadding + parent.bottomPadding
+                color: "transparent"
+                border.color: settings.palette.alternateBase
+                radius: 2
+            }
+            label: Label {
+                x: parent.leftPadding
+                width: parent.availableWidth
+                text: parent.title
+                font.bold: true
+                font.pointSize: settings.fontSize
+                color: settings.palette.text
+                elide: Text.ElideRight
+            }
+
+            RowLayout {
                 Layout.fillWidth: true
                 spacing: 10
 
@@ -61,12 +82,25 @@ Page {
                  * When checked, it changes the application's theme to dark mode.
                  */
                 CheckBox {
-                    text: "Dark Mode"
-                    checked: settings.darkMode
+                    property bool init: false
+
                     onCheckedChanged: {
-                        settings.toggleTheme()
-                        console.log(settings.darkMode)
+                        if (init) {
+                            settings.toggleTheme()
+                            console.log("Settings darkmode :", settings.darkMode)
+                        }
                     }
+
+                    Component.onCompleted: {
+                        checked = settings.darkMode
+                        init = true
+                    }
+                }
+
+                Text {
+                    text: "Mode sombre"
+                    font.pointSize: settings.fontSize
+                    color: settings.palette.text
                 }
             }
         }
@@ -79,6 +113,24 @@ Page {
         GroupBox {
             title: "Font Settings"
             Layout.fillWidth: true
+
+            background: Rectangle {
+                y: parent.topPadding - parent.bottomPadding
+                width: parent.width
+                height: parent.height - parent.topPadding + parent.bottomPadding
+                color: "transparent"
+                border.color: settings.palette.alternateBase
+                radius: 2
+            }
+            label: Label {
+                x: parent.leftPadding
+                width: parent.availableWidth
+                text: parent.title
+                font.bold: true
+                font.pointSize: settings.fontSize
+                color: settings.palette.text
+                elide: Text.ElideRight
+            }
 
             /**
              * @brief A row layout for adjusting the font size.
@@ -95,18 +147,20 @@ Page {
 
                     Text {
                         text: "Font Size:"
+                        font.pointSize: settings.fontSize
+                        color: settings.palette.text
                         Layout.alignment: Qt.AlignVCenter
                     }
 
                     /**
                      * @brief Slider to adjust the font size.
                      *
-                     * Allows users to select a font size between 10 and 24.
+                     * Allows users to select a font size between 8 and 16.
                      */
                     Slider {
                         id: fontSizeSlider
-                        from: 10
-                        to: 24
+                        from: 8
+                        to: 16
                         stepSize: 1
                         value: settings.fontSize
                         onValueChanged: {
@@ -119,7 +173,8 @@ Page {
                     Text {
                         text: settings.fontSize.toString()
                         Layout.alignment: Qt.AlignVCenter
-
+                        font.pointSize: settings.fontSize
+                        color: settings.palette.text
                     }
                 }
 
@@ -135,6 +190,8 @@ Page {
                     Text {
                         text: "Font Family:"
                         Layout.alignment: Qt.AlignVCenter
+                        font.pointSize: settings.fontSize
+                        color: settings.palette.text
                     }
 
                     /**
@@ -144,7 +201,7 @@ Page {
                      */
                     ComboBox {
                         id: fontComboBox
-                        font.pointSize: 10
+                        font.pointSize: settings.fontSize
                         padding: 2
                         model: ["Arial", "Courier New", "Times New Roman", "Verdana"]
                         currentIndex: 0  // Police par défaut

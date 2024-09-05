@@ -2,31 +2,27 @@ import QtQuick
 
 Rectangle {
     id: button
-    width: 100
-    height: 50
-    color: "lightBlue"
-    border.color: "blue"
-    radius: 10
+    color: settings.palette.button
+    border.color: settings.palette.base
+    radius: 16
+    implicitWidth: 100
+    implicitHeight: 40
 
     signal clicked()
-    property string text: "Cliquez-moi"
-    property int textSize: 20
-    property string textColor: "black"
-    property string buttoncolor: "lighBlue"
-    property string borderColor: "blue"
+    property string text: ""
 
     states: [
         State {
             name: "idle"
-            PropertyChanges { target: button; color: "lightBlue"; border.color: "blue" }
+            PropertyChanges { target: button; color: settings.palette.button; border.color: settings.palette.base }
         },
         State {
             name: "pressed"
-            PropertyChanges { target: button; color: "blue"; border.color: "darkBlue" }
+            PropertyChanges { target: button; color: settings.palette.light; border.color: settings.palette.base }
         },
         State {
             name: "hovered"
-            PropertyChanges { target: button; color: "lightGreen"; border.color: "darkGreen" }
+            PropertyChanges { target: button; color: settings.palette.light; border.color: settings.palette.base }
         }
     ]
 
@@ -47,7 +43,8 @@ Rectangle {
     Text {
         anchors.centerIn: parent
         text: button.text
-        color: button.textColor
-        font.pixelSize: button.textSize
+        font.family: settings.fontFamily
+        font.pointSize: settings.fontSize
+        color: settings.palette.text
     }
 }
